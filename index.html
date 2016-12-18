@@ -1,0 +1,152 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LibreStore</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link href="css/style.css" rel="stylesheet" type="text/css"  media="all" />
+	</head>
+	<body id="main">
+		<!---start-wrap---->
+			<!---start-header---->
+				<div id="page">
+					<div id="header">
+						<a class="navicon" href="#menu"><span class="fa fa-bar"></span> </a>
+						<div class="logo">
+						<a href="#"><img src="images/liberstore.png" width="80px" @click="getBookList()"></a>
+						</div>
+						<div class="clear"> </div>
+					</div>
+					<nav id="menu-left">
+						<ul>
+							<li><a href="#"><span>home</span></a></li>
+							<li><a href="#"><span>Login</span></a></li>
+							<li><a href="#"><span>Register</span></a></li>
+							<div class="clear"> </div>
+						</ul>
+					</nav>
+				</div>
+		<!---//End-header---->
+		<!---start-content---->
+		<div class="content">
+			<div class="wrap">
+
+<div v-show="showTransmit">{{transmit}}</div>
+
+<!-- main --> 
+
+			 <div id="main" role="main" v-show="showMain">
+			      <ul id="tiles">
+			        <!-- These are our grid blocks -->
+			        <li v-for="key in bookList" @click="getDetailBook(key.code_book)">
+			        	<img v-bind:src="host+key.photos">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">{{key.title_book}}</a></h3>
+				        		<span><a href="#"><label> </label>{{key.price}}</a></span>
+				        		<p>{{key.sinopsis}}</p>
+			        		</div>
+			        	</div>
+			        </li>
+			        <!-- End of grid blocks -->
+			      </ul>
+			    </div>
+<!-- main end -->
+
+<!-- detail -->
+			    	<div class="single-page" v-show="showDetail">
+							<div class="single-page-artical">
+							<div class="artical-content">
+									<img v-bind:src="host+detailBook.data_token[0].photos" title="banner1">
+									<h3><a href="#">{{detailBook.data_token[0].title_book}}</a></h3>
+									<p>{{detailBook.data_token[0].sinopsis}}</p>
+								    <div class="artical-links">
+								    <ul>
+		  						 		<li>{{detailBook.data_token[0].author}}</li>
+		  						 		<li>{{detailBook.data_token[0].price}}</li>
+		  						 	</ul>
+		  						 	<ul>
+		  						 		<li><button>Buy this book</button></li>
+		  						 	</ul>
+		  						 </div>
+		  						 <div class="clear"> </div>
+							</div>
+							
+						</div>
+						 </div>
+<!-- detail end -->
+
+
+			<div class="page" v-show="showLogin">
+				<form id="form-login" class="form">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="Username">
+					</div>	
+					<div class="form-group">
+						<input type="password" class="form-control" name="password" placeholder="Password">
+					</div>	
+					<div class="form-group">
+						<button class="btn btn-warning pull-left" type="reset">Reset</button>
+						<button class="btn btn-primary pull-right" type="button">Login</button>
+					</div>
+				</form>
+				
+			</div>
+			
+			<div class="page" v-show="showRegister">
+				
+				<form id="form-register" class="form">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="Username" id="username">
+					</div>	
+					<div class="form-group">
+						<input type="text" class="form-control" name="email" placeholder="Email" id="email">
+					</div>	
+					<div class="form-group">
+						<input type="password" class="form-control" name="password" placeholder="Password" id="password">
+					</div>	
+					<div class="form-group">
+						<input type="password" class="form-control" name="password_confirmation" placeholder="Retype Password" id="password_confirmation">
+					</div>	
+					<div class="form-group">
+						<button class="btn btn-warning pull-left" type="reset">Reset</button>
+						<button class="btn btn-primary pull-right" type="button">Register</button>
+					</div>
+				</form>
+				
+			</div>
+
+
+
+			</div>
+		</div>
+		<!---//End-content---->
+		
+		<div class="navgation-links">
+			   	<a name="menu"> </a>
+			   			<ul>
+							<li><a href="#" @click="getBookList()"><span>home</span></a></li>
+							<li><a href="#" @click="showLoginForm()"><span>Login</span></a></li>
+							<li><a href="#" @click="showRegisterForm()"><span>Register</span></a></li>
+							<div class="clear"> </div>
+						</ul>
+			   </div>
+	
+		
+		<div class="footer">
+			<p>Design by Muhammad Iqbal Muzaki</p>
+		</div>
+		
+		<!---//End-wrap---->
+		<script type="text/javascript" src="js/vue.min.js"></script>
+		<script type="text/javascript" src="js/vue-resource.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
+
